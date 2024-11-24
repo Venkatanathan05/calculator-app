@@ -5,15 +5,7 @@
   <groupId>com.example</groupId>
   <artifactId>calculator-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-
-  <!-- Repositories (optional, add if you're using remote repositories like Artifactory) -->
-  <repositories>
-    <!-- Example: Use your repository URLs here -->
-    <!-- <repository> -->
-    <!--   <id>my-repo</id> -->
-    <!--   <url>http://example.com/repository</url> -->
-    <!-- </repository> -->
-  </repositories>
+  <packaging>jar</packaging>
 
   <dependencies>
     <!-- JUnit Dependency for Unit Testing -->
@@ -23,20 +15,17 @@
         <version>4.13.2</version>
         <scope>test</scope>
     </dependency>
-
-    <!-- Add other dependencies for your app, e.g., for logging, app frameworks -->
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
-
     <plugins>
-      <!-- Maven Compiler Plugin to compile the code with Java 21 -->
+      <!-- Maven Compiler Plugin -->
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>21</release> <!-- Ensure JDK 21 compatibility -->
+          <release>21</release>
         </configuration>
       </plugin>
 
@@ -44,27 +33,26 @@
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.7</version>
+        <version>0.8.10</version>
         <executions>
           <execution>
             <goals>
-              <goal>prepare-agent</goal> <!-- Prepares JaCoCo agent -->
-              <goal>report</goal> <!-- Generates code coverage report -->
+              <goal>prepare-agent</goal>
+              <goal>report</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
 
-      <!-- SonarQube Plugin for Static Code Analysis -->
+      <!-- SonarQube Plugin -->
       <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.9.0.2155</version> <!-- Make sure to use the right version for your SonarQube server -->
+        <version>3.9.0.2155</version>
       </plugin>
     </plugins>
   </build>
 
-  <!-- Properties (optional, define your Maven goals, Java versions, etc.) -->
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
