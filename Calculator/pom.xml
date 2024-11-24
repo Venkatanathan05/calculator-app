@@ -1,40 +1,72 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+
+  <!-- Basic information about the project -->
   <groupId>com.example</groupId>
   <artifactId>calculator-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <!-- Repositories (optional, add if you're using remote repositories like Artifactory) -->
+  <repositories>
+    <!-- Example: Use your repository URLs here -->
+    <!-- <repository> -->
+    <!--   <id>my-repo</id> -->
+    <!--   <url>http://example.com/repository</url> -->
+    <!-- </repository> -->
+  </repositories>
+
   <dependencies>
-    <!-- JUnit Dependency for Testing -->
+    <!-- JUnit Dependency for Unit Testing -->
     <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.13.2</version>
         <scope>test</scope>
     </dependency>
+
+    <!-- Add other dependencies for your app, e.g., for logging, app frameworks -->
   </dependencies>
+
   <build>
     <sourceDirectory>src</sourceDirectory>
+
     <plugins>
+      <!-- Maven Compiler Plugin to compile the code with Java 21 -->
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
-          <release>21</release>
+          <release>21</release> <!-- Ensure JDK 21 compatibility -->
         </configuration>
       </plugin>
+
+      <!-- JaCoCo Plugin for Code Coverage -->
       <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.7</version>
-            <executions>
-                <execution>
-                    <goals>
-                        <goal>prepare-agent</goal>
-                        <goal>report</goal>
-                    </goals>
-                </execution>
-            </executions>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>prepare-agent</goal> <!-- Prepares JaCoCo agent -->
+              <goal>report</goal> <!-- Generates code coverage report -->
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- SonarQube Plugin for Static Code Analysis -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.0.2155</version> <!-- Make sure to use the right version for your SonarQube server -->
       </plugin>
     </plugins>
   </build>
+
+  <!-- Properties (optional, define your Maven goals, Java versions, etc.) -->
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+  </properties>
 </project>
